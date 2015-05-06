@@ -1,0 +1,15 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block title%}Upload Media{% endblock %}
+
+{% block content %}
+<h1>Upload Media</h1>
+<form action="/admin/media/create/" enctype="multipart/form-data" method="POST">
+	<input type="file" name="media_file">
+	<br />
+	<input type="text" name="media_name">
+	<br/>
+	<textarea name="media_description"></textarea>
+	<input type="submit" class="btn btn-primary">
+</form>
+{% endblock %}

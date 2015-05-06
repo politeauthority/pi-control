@@ -1,0 +1,56 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Edit User</h1>
+            <a href="/admin/users/"><i class="fa fa-angle-left"></i> back</a>
+        </div>
+    </div>
+
+    <form action="/admin/users/edit/{{user.id}}" method="POST">
+    	<div class="row">
+            <div class="small-6 columns">
+                <div class="float-label">
+                    <input type="text" class="input" name="user_name" value="{{user.name}}">
+                    <label>Name</label>
+                </div>
+            </div>
+            <div class="small-6 columns">
+                <div class="float-label">
+                    <input type="text" class="input" name="user_email" value="{{user.email}}">
+                    <label>Email</label>
+                </div>
+            </div>
+            <div class="small-6 columns">
+                <div class="float-label">
+                    <input type="password" class="input" name="user_password">
+                    <label>Password</label>
+                </div>
+            </div>
+            <div class="small-6 columns">
+                <div class="float-label">
+                    <select name="user_role_id">
+                        <option value=""></option>
+                        {% for role in roles %}
+                          <option {% if role['id'] == user.role.id %}selected="seleced"{% endif %} value="{{role['id']}}">{{role['role_name']}}</option>
+                          }
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div  class="row">
+            <div class="small-6 small-centered columns">
+                <div class="row">
+                    <div class="small-6 columns">
+                        <input type="submit" name="user_submit" class="button expand">
+                    </div>
+                    <div class="small-6 columns">
+                        <a href="/admin/users/delete/{{user.id}}" class="button alert expand">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

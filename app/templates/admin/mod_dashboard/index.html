@@ -1,0 +1,15 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block title%}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="small-12 columns">
+		<ul class="inline-list right">
+			<li>Upload Space Used {{upload_dir_size}}</li>
+			<li>Cache Space Used {{cachie_dir_size}}</li>
+		</ul>
+		<h1>Dashboard</h1>
+	</div>
+</div>
+{% endblock %}

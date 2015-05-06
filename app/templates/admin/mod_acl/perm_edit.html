@@ -1,0 +1,44 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block title%}Access Control List{% endblock %}
+
+{% block content %}
+<h1>Access Control List</h1>
+<ul>
+	<li>
+		<a href="/admin/tools/">Admin Tools</a>
+	</li>
+	<li>
+		<a href="/admin/acl/">Access Control List</a>
+	</li>
+	<li>
+		<a href="/admin/acl/perm_info/{{perm.id}}">Permission : {{perm.perm_name}}</a>
+	</li>
+	<li>Edit</li>
+</ul>
+
+<div>
+	<h2>Perm: {{perm.perm_name}}</h3>
+	<div>
+		<form>
+			<table>
+				<tr>
+					<td>Perm Name</td>
+					<td>
+						<input name="perm_name" value="{{perm.perm_name}}">
+					</td>
+				</tr>
+				<tr>
+					<td>Perm Key</td>
+					<td>
+						<input name="perm_key" value="{{perm.perm_key}}">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<br/>
+	<a href="/admin/acl/perm_delete/{{perm.id}}" class="btn btn-danger">Delete Permission</a>
+</div>
+
+{% endblock %}

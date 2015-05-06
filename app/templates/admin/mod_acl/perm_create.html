@@ -1,0 +1,38 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block title%}Add Perm{% endblock %}
+
+{% block content %}
+    <h2>Add Perm to Role {{role['role_name']}}</h2>
+    <div class="row">
+        <div class="col-6">
+            New Perm
+            <form action="/admin/acl/perm_add/{{role_id}}/" method="POST">
+                <input type="hidden" name="create_type" value="perm">
+                <table>
+                    <tr>
+                        <td>Perm Name</td>
+                        <td><input type="text" name="perm_name"></td>
+                    </tr>
+                    <tr>
+                        <td>Perm Key</td>
+                        <td><input type="text" name="perm_key"></td>
+                    </tr>         
+                </table>
+                <input type="submit" />
+            </form>
+        </div> - OR -
+        <div class="col-6">
+            Add Existing Perm
+            <form action="/admin/acl/perm_add/{{role_id}}/" method="POST">
+                <input type="hidden" name="create_type" value="perm">
+                <select>
+                    {% for perm in perms %}
+                        <option value="{{perm.id}}">{{perm.perm_name}}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" />
+            </form>
+        </div>         
+  </div>
+{% endblock %}

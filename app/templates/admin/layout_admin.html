@@ -1,0 +1,73 @@
+{# Main Layout File #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/stylesheets/app.css" />
+    <script src="/static/bower_components/modernizr/modernizr.js"></script>
+    {% block head %}
+        <title>{% block title %}{% endblock %} - RoyalTidyFish</title>
+    {% endblock %}
+</head>
+
+<body>
+    <div class="off-canvas-wrap" data-offcanvas>
+        <div class="inner-wrap">
+            <nav class="tab-bar">
+                <section class="left-small">
+                    <a class="left-off-canvas-toggle menu-icon" href="#" ><span></span></a>
+                </section>
+                <section id="header-user" class="right">
+                    <div class="row">
+                        <div class="small-9 columns text-right">
+                            <a href="/admin/users/info/{{session.user_id}}/">{{session.user.name}}</a>
+                        </div>
+                        <div class="small-3 columns">
+                            <a href="/admin/users/info/{{session.user_id}}/"><img src="http://icons.iconseeker.com/ico/sticker-pack-1/skull-bw.ico" alt="{ # user.name #}"></a>
+                        </div>
+                    </div>
+                </section>
+            </nav>
+            <!-- Off Canvas Menu -->
+            <aside class="left-off-canvas-menu">
+                <!-- whatever you want goes here -->
+                <ul class="off-canvas-list">
+                    <li><label>Pages</label></li>
+                    <li><a href="/admin/dashboard/">Dashboard</a></li>
+                    <li><a href="/admin/pages/">Pages</a></li>
+                    <li><a href="/admin/blog/">Blog</a></li>
+                    <li><a href="/admin/users/">Users</a></li>
+                    <li><a href="/admin/media/">Media</a></li>
+                    <!--<li><a href="/admin/products/">Products</a></li>-->
+                    <li><a href="/admin/tools/">Admin Tools</a></li>
+                    <li>
+                        {# <a href="/admin/users/info/{{session.user_id}}/">{{session.user.name}}</a> #}
+                    </li>
+                    <li>
+                        <a href="/admin/auth/logout">Log Out</a>
+                    </li>
+                </ul>
+            </aside>
+            <!-- main content goes here -->
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+            <!-- close the off-canvas menu -->
+            <a class="exit-off-canvas"></a>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="row">
+            <div class="small-12 columns">
+                {% block footer %}
+                v .002
+                {% endblock %}
+            </div>
+        </div>
+    </footer>
+    <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/static/bower_components/foundation/js/foundation.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

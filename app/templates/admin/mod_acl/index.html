@@ -1,0 +1,39 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block title%}Access Control List{% endblock %}
+
+{% block content %}
+<h1>Access Control List</h1>
+<ul>
+	<li>
+		<a href="/admin/tools/">Admin Tools</a>
+	</li>
+	<li>
+		Access Control List
+	</li>
+</ul>
+<div>
+	<h3>Roles</h3>
+	<ul>
+
+		{% for role in roles %}
+		<li>
+			<a href="/admin/acl/role_info/{{role.id}}">{{role.role_name}}</a>
+		</li>
+		{% endfor %}
+	</ul>
+	<a href="/admin/acl/role_add/">Add Role</a>
+</div>
+<div>
+	<h3>Perms</h3>
+	<ul>
+		{% for perm in perms %}
+		<li>
+			<a href="/admin/acl/perm_info/{{perm.id}}">{{perm.perm_name}}</a>
+		</li>
+		{% endfor %}
+	</ul>
+	<a href="/admin/acl/perm_add/">Add Perm</a>
+</div>
+
+{% endblock %}

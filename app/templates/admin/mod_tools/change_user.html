@@ -1,0 +1,18 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block title%}Tools{% endblock %}
+
+{% block content %}
+  <h1>Tools</h1>
+  <ul>
+  	<li><a href="/admin/tools">Tools</a></li>
+  </ul>
+  <form action="/admin/tools/change_user/" method="POST">
+    <select name="user_id">
+      {% for user in users %}
+        <option value="{{user.id}}">{{user.name}}</option>
+      {% endfor %}
+    </select>
+    <input type="submit">
+  </form>
+{% endblock %}

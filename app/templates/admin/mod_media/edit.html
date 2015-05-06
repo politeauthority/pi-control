@@ -1,0 +1,49 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block content %}
+  <h1>Media </h1>
+  <div class="row">
+    <a href="/admin/media">Media</a> >> {{media.name}}
+  </div>
+	<div class="row">
+    <div class="col-6">
+      <img src="/media/{{media.file_path}}">
+    </div>
+    <div class="col-6">
+      <form action="/admin/media/edit/{{media.id}}" method="POST">
+        <table class="table table-striped">
+         	<tr>
+            <td>ID</td>
+         		<td>{{media.id}}</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>
+              <input type="text" name="media_name" value="{{media.name}}">
+            </td>
+          </tr>           
+          <tr>
+            <td>File URI</td>
+            <td>
+              <a href="/media/{{media.file_path}}" target="_new">media/{{media.file_path}}</a>
+            </td>
+          </tr>   
+          <tr>
+            <td>Description</td>
+            <td>
+              <textarea name="media_description">{{media.description}}</textarea>
+            </td>
+          </tr>                                
+        </table>
+        <input type="submit" value="Save" class="btn btn-success">
+      </form>
+    </div>
+    <div class="col-6">
+      <ul>
+        <li>
+          <a class="btn btn-danger" href="/admin/media/delete/{{media.id}}">Delete</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

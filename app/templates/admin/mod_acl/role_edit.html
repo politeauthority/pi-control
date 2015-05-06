@@ -1,0 +1,66 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block title%}Access Control List{% endblock %}
+
+{% block content %}
+<h1>Access Control List</h1>
+<ul>
+	<li>
+		<a href="/admin/tools/">Admin Tools</a>
+	</li>
+	<li>
+		<a href="/admin/acl/">Access Control List</a>
+	</li>
+	<li>
+		<a href="">Role : {{role['role_name']}}</a>
+	</li>
+	<li>Edit</li>
+</ul>
+<div>
+	<h2>Role: {{role.role_name}}</h3>
+	<div>
+		<form>
+			<table>
+				<tr>
+					<td>Role Name</td>
+					<td><input name="role_name"></td>
+				</tr>
+				<tr>
+					<td>Role Key</td>
+					<td>
+						<input name="role_key">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<h3>Permissions</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>Perm Name</td>
+				<td>Perm Key</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for perm in role.permissions %}
+				<tr>
+					<td>
+						<a href="/admin/acl/perm_info/{{perm.id}}">{{perm.perm_name}}</a>
+					</td>
+					<td>{{perm.perm_key}}</td>
+					<td>
+						<a href="/admin/acl/role_remove_perm/{{role['id']}}/{{perm.id}}">{{role['id']}}/{{perm.id}}</a>	
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>		
+	</table>
+	
+	<a href="/admin/acl/perm_add/{{role.id}}" class="btn btn-success">Add Permission</a>
+	<br/>
+	<a href="/admin/acl/role_delete/{{role.id}}" class="btn btn-danger">Delete Role</a>
+</div>
+
+{% endblock %}

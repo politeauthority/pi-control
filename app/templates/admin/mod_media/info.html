@@ -1,0 +1,70 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block content %}
+  <h1>Media</h1>
+  <div class="row">
+    <a href="/admin/media">Media</a> >> {{media.name}}
+  </div>
+	<div class="row">
+    <div class="col-6">
+      <img src="/media/{{media.file_path}}">
+    </div>
+    <div class="col-6">
+      <table class="table table-striped">
+        <tr>
+          <td>ID</td>
+          <td>{{media.id}}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+        	<td>{{media.name}}</td>
+        </tr>
+        <tr>
+          <td>File Name</td>
+          <td>{{media.file_name}}</td>
+        </tr>                
+        <tr>
+          <td>Created</td>
+          <td>{{media.date_created}}</td>
+        </tr>
+        <tr>
+          <td>Last Modified</td>
+          <td>{{media.date_modified}}</td>
+        </tr>                    
+        <tr>
+          <td>File Size</td>
+          <td>{{media.file_size}}</td>
+        </tr>
+        <tr>
+          <td>File Type</td>
+          <td>{{media.file_type}}</td>
+        </tr>                
+        <tr>
+          <td>File URI</td>
+          <td>
+            <a href="/media/{{media.file_path}}" target="_new">media/{{media.file_path}}</a>
+          </td>
+        </tr>   
+        <tr>
+          <td>Uploaded By</td>
+          <td>
+            {{media.creator.name}}
+          </td>
+        </tr> 
+        <tr>
+          <td>Description</td>
+          <td>
+            {{media.description}}
+          </td>
+        </tr>                                
+      </table>
+    </div>
+    <div class="col-6">
+        <ul>
+            <li>
+                <a class="btn btn-primary" href="/admin/media/edit/{{media.id}}">Edit</a>
+            </li>
+        </ul>
+    </div>
+  </div>
+{% endblock %}

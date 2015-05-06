@@ -1,0 +1,14 @@
+{% extends "frontend/theme1/layout.html" %}
+
+{% block content %}
+	<div class="row-12">
+    <h1>Blog</h1>
+  	<div class="col-8">
+      <h2>{{post.title}}</h2>
+      <div>
+        {{post.content}}
+      </div>
+  	</div>
+    </div>
+  </div>
+{% endblock %}

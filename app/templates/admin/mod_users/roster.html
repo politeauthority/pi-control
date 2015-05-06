@@ -1,0 +1,52 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block content %}
+	<div class="row">
+        <div class="small-12 columns">
+            <h1>Users</h1>
+            <a href="/admin/users/create/">New User</a>
+        </div>
+    </div>
+    
+	{% if users %}
+        <hr>
+        <div class="row">
+            <div class="small-1 columns">
+				<h5>ID</h5>
+            </div>
+            <div class="small-2 columns">
+				<h5>Name</h5>
+            </div>
+            <div class="small-3 columns">
+				<h5>Email</h5>
+            </div>
+            <div class="small-3 columns">
+				<h5>Created</h5>
+            </div>
+            <div class="small-3 columns">
+				<h5>Last Login</h5>
+			</div>
+		</div>
+        <hr>
+		{% for user in users %}
+			<div class="row">
+				<div class="small-1 columns">
+                    {{user.id}}
+                </div>
+				<div class="small-2 columns">
+                    <a href="/admin/users/info/{{user.id}}">{{user.name}}</a>
+				</div>
+				<div class="small-3 columns">
+                    {{user.email}}
+                </div>
+				<div class="small-3 columns">
+                    {{user.date_created}}
+                </div>
+				<div class="small-3 columns">
+                    {{user.date_modified}}
+                </div>
+			</div>
+            <hr>
+		{% endfor %}
+	{% endif %}
+{% endblock %}

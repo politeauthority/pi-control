@@ -1,0 +1,7 @@
+env/bin/pip install flask
+env/bin/pip install flask-sqlalchemy
+env/bin/pip install flask-wtf
+env/bin/pip install flask-debugtoolbar
+env/bin/pip install flask-cache
+env/bin/pip install psycopg2
+

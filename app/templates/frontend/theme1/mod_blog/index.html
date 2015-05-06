@@ -1,0 +1,35 @@
+{% extends "frontend/theme1/layout.html" %}
+
+{% block content %}
+	<div class="row-12">
+    <h1>Blog</h1>
+    {% if posts %}
+	    {% for post in posts %}
+	    	<div class="col-8">
+	    		<a href="/blog/{{post.uri}}">
+            <h2>{{post.title}}</h2>
+          </a>
+          <div>
+            {{post.content}}
+          </div>
+	    	</div>
+	    {% endfor %}
+    {% endif %}
+    </div>
+  </div>
+  {%if pagination.pages > 1 %}
+    <ul>
+    {% for x in range( 1, pagination.pages + 1 ) %}
+      {% if pagination.page == x %}
+      <li style="color:red"> 
+        {{x}}
+      </li>
+      {% else %}
+      <li> 
+        <a href="/blog/page/{{x}}">{{x}}</a>
+      </li>    
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

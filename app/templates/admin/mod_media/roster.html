@@ -1,0 +1,40 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block title%}Media{% endblock %}
+
+{% block content %}
+  <div class="row-12">
+    <h1>Media</h1>
+    <a href="/admin/media/create/">Add New</a>
+    <div class="col-6">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td></td>
+            <td>File Name</td>
+            <td>File Size</td>
+            <td>Last Modified</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% if media %}
+            {% for m in media %}
+              <tr>
+                <td>
+                  <a href="/admin/media/info/{{m.id}}">
+                    <img src="/media/{{m.file_path}}/crop/100,100">
+                  </a>
+                </td>
+                <td>
+                  <a href="/admin/media/info/{{m.id}}">{{m.name}}</a>
+                </td>
+                <td>{{m.file_size}}</td>
+                <td>{{m.date_modified}}</td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}
