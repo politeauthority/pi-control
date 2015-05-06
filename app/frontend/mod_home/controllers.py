@@ -1,7 +1,7 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template, \
                   flash, g, session, redirect, url_for
-
+from app.helpers.pishell import PiShell
 mod_home = Blueprint('home', __name__ )
 
 template_name = 'theme1'
@@ -11,13 +11,9 @@ def index( ):
     """
         Main Index
     """
-    #app.log.info('hey')
-    import subprocess
-    p = subprocess.Popen(['ifconfig'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    print out
     data = {
-        'interfaces' : out
+        'interfaces' : PiShell().network_inferfaces(),
+        'uptime'     : PiShell().uptime()
     }
     return render_template( __get_template("index.html"), **data )
 

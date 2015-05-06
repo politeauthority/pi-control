@@ -2,9 +2,22 @@
 
 {% block content %}
 	<div class="row-12">
-    <h1>Home</h1>
     <div class="col-6">
-      {{interfaces}}
+    	<ul>
+      	<li>Interfaces</li>
+      	{% for i in interfaces %}
+      		<ul>
+      			<li>{{i.name}}</li>
+      			<li><b>Mac:</b> {{i.mac}}</li>
+      			<li><b>IP:</b> {{i.ip}}</li>
+      			<li><b>RX:</b> {{i.rx.bytes_raw}}</li>
+      			<li><b>TX:</b> {{i.tx.bytes_raw}}</li>
+      		</ul>
+      	{% endfor %}
+      </ul>
     </div>
+    <div class="col-6">
+   		Uptime : {{uptime}}
+    </div>    
   </div>
 {% endblock %}
