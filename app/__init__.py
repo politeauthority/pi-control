@@ -51,14 +51,12 @@ def not_found(error):
 
 # # Front End BluePrints
 from app.frontend.mod_home.controllers import mod_home as home_module
-from app.frontend.mod_blog.controllers import mod_blog as blog_module
 
 from app.controllers.media.controllers import media as media_module
 
 # Admin BluePrints
 from app.admin.mod_acl.controllers       import mod_admin_acl       as admin_acl_module
 from app.admin.mod_auth.controllers      import mod_admin_auth      as admin_auth_module
-
 from app.admin.mod_dashboard.controllers import mod_admin_dashboard as admin_dashboard_module
 from app.admin.mod_home.controllers      import mod_admin_home      as admin_home_module
 from app.admin.mod_media.controllers     import mod_admin_media     as admin_media_module
